@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.bootcss.com/angular.js/1.4.3/angular.min.js"></script>
+	<script>
+		var app = angular.module('app',[]);
+		app.controller("appCtrl",function($scope){
+			$scope.loadMoreData = function(){
+				alert('正在加载中。。');
+			}
+			$scope.delData = function(){
+				alert('正在删除中。。');
+			}
+
+			
+		})
+
+		app.directive("enter",function(){
+			return function(scope,element,attrs){
+				element.bind('mouseenter',function(){
+					scope.$apply(attrs.enter)
+				})
+			}
+		})
+
+
+	</script>
+</head>
+<body>
+	<div ng-app="app">
+		<div ng-controller="appCtrl">
+			<div enter="delData()">I am here</div>
+		</div>
+	</div>
+</body>
+</html>
